@@ -1,0 +1,46 @@
+Functions description of BOW model
+
+1.model.py
+   In class bow_nn:
+　　(1) __init__(): To initialize the Neural Networks model.
+　　(2) forward(): To give a prediction result with the initialized model and passed parameters of a given dataset.
+
+2.model_to_use == ‘bow’ part in question_classifier.py
+　　(1) train_pro(): To get the training data of sentences and labels respectively, which are split from the training dataset.
+　　(2) dev_pro(): To get the validation data of sentences and labels respectively, which are split from the validation dataset.
+　　(3) test_pro(): To get the test data of sentences and labels respectively, which are split from the test dataset.
+　　(4) bow_train(): To train the classifier model, returning the number of correctly classified samples, number of total training samples and the loss.
+　　(5) bow_evaluate(): To evaluate the trained model and give the criteria result of evaluation with the validation data.
+　　(6) bow_test(): To classify the test dataset with the trained model and test data, returning criteria result of test.
+　　(7) rightness(): To compare the prediction results and real labels and return the number of correctly classified samples and total samples. (Used in training and validation evaluation.)
+　　(8) rightness_test(): To compare the prediction results and real labels and return the number of correctly classified samples and total samples. Besides, it can also analyse the incorrectly samples.
+
+3.dataLoad.py
+　　(1) word2idx(): To get the indexes of words in a passed-in sentence.
+　　In class DataSplit:
+　　(2) load_split(): To load in the file by the given path and split it into data, sentences, all the words and all the labels.
+　　In class dataProcessor:
+　　(3) word2index(): To extract the words from the given data without duplicate and assign an index to each word.
+　　(4) count_labels(): To extract the labels without duplicate from all the labels split from the raw data.
+　　(5) label2index(): To assign an index to each index in the label list got from count_labels.
+　　(6) freq_dic(): To count the frequency of each words in sentences, returning the words and their corresponding frequency.
+
+
+Functions description of biLSTM model
+
+1. model.py
+   In class bilstm:
+   (1) __init__(): To initialize the neural network.
+   (2) forward(): the forward function of the neural network.
+
+2. model_to_use == ‘biLSTM’ part in question_classifier.py
+   (1) biLSTM_train(): To train a classifier model, returning the number of correctly classified samples, number of total training samples and the loss.
+   (2) biLSTM_evaluate(): To evaluate the trained model and give the criteria result of evaluation with the validation data.
+   (3) biLSTM_test(): To classify the test dataset with the trained model and test data, returning criteria result of test.
+   (4) rightness_test(): To compare the prediction labels with real labels. Counting the number of incorrectly classified labels.Output the test data prediction results into output file
+
+3. dataLoad.py
+   (1) class Words(): Collect the words in sentences. Remove stop words and punctuations.
+   (2) class Labels(): Collect labels.
+   (3) class DataLoader(): Load the data into an object. Pad the sentences into longest with 0s.
+   (4) class Corpus(): Preprocessing include lowercase the sentences and delete the punctuations. Split the sentences from the labels.
